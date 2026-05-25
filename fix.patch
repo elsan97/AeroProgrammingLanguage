@@ -1,0 +1,29 @@
+2362,2380d
+3856,3859d
+4040,4043d
+4470,4473d
+3407,3410d
+2545,2570c
+void cmd_isfile(char* params) {
+    char path[MAX_STRING];
+    get_string_value(params, path);
+    FILE* f = fopen(path, "r");
+    if (f) {
+        fclose(f);
+        printf("true\n");
+    } else {
+        printf("false\n");
+    }
+}
+
+void cmd_isdir(char* params) {
+    char path[MAX_STRING];
+    get_string_value(params, path);
+    char test_path[MAX_STRING + 10];
+    sprintf(test_path, "%s\\.", path);
+    if (_access(test_path, 0) == 0) {
+        printf("true\n");
+    } else {
+        printf("false\n");
+    }
+}
